@@ -4,12 +4,12 @@ GCC=gcc
 ATSVER=0.2.12
 ATSLANGURL_github=http://ats-lang.github.io
 ATSPACK=ats-lang-anairiats-${ATSVER}
-ATSHOME=${PWD}/${DIRECTORY}/${ATSPACK}
-ATSHOMERELOC=ATS-${ATSVER}
-PATSHOME=${PWD}/${DIRECTORY}/ATS2
+export ATSHOME=${PWD}/${DIRECTORY}/${ATSPACK}
+export ATSHOMERELOC=ATS-${ATSVER}
+export PATSHOME=${PWD}/${DIRECTORY}/ATS2
 PATSUTILS=${PWD}/${DIRECTORY}/PostiATS-Utilities
 PATH=$PATSHOME/bin:$PATSUTILS:${PATH}
-PATSCONTRIB=${PWD}/${DIRECTORY}/ATS2-contrib
+export PATSCONTRIB=${PWD}/${DIRECTORY}/ATS2-contrib
 
 
 if [ ! -d "$DIRECTORY" ]; then
@@ -22,8 +22,8 @@ if [ ! -f "$PATSHOME/bin/patscc" ]; then
     tar -zxf "$ATSPACK".tgz
     (cd "$ATSPACK" && ./configure&&make CC=${GCC} all_ngc)
     (cd "$ATSPACK"/ccomp/runtime/GCATS && make && make clean)
-    git clone --depth 1 https://github.com/githwxi/ATS-Postiats.git ATS2
-    git clone --depth 1 https://github.com/githwxi/ATS-Postiats-contrib.git ATS2-contrib
+    git clone https://github.com/githwxi/ATS-Postiats.git ATS2
+    git clone https://github.com/githwxi/ATS-Postiats-contrib.git ATS2-contrib
     (cd ATS2 && cp "$ATSPACK"/config.h .)
     (cd ATS2 && time make -f Makefile_devl)
     (cd ATS2/src && make cleanall)
@@ -33,7 +33,7 @@ if [ ! -f "$PATSHOME/bin/patscc" ]; then
     (cd ATS2/utils/libatsopt && make && make clean)
     cp -f ATS2/ccomp/atslib/lib/libatsopt.a "$ATSPACK"/ccomp/lib
     (cd ATS2/contrib/CATS-parsemit && time make all)
-    git clone --depth 1 https://github.com/Hibou57/PostiATS-Utilities.git
+    git clone https://github.com/Hibou57/PostiATS-Utilities.git
   )
 fi
 
