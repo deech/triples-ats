@@ -1,0 +1,23 @@
+#+TITLE: Triples ATS
+#+AUTHOR: Aditya Siram
+#+PROPERTY: header-args    :comments no
+#+OPTIONS: ^:nil ;; let an underscore be an underscore, disable sub-superscripting
+#+OPTIONS: timestamp:nil
+
+
+* Overview
+This repo contains an implementation of [[https://github.com/atilaneves/pythagoras][Pythagorean triples benchmark.]]
+
+* Installation
+You don't need to have ATS to run the example, the ~build.sh~ script pulls
+ATS and its dependencies directly from Github, builds the compiler from scratch
+in ~./ATS/~ and compiles the implementations. Nothing outside this directory is
+affected. All you need is ~git~, ~libgmp~ and standard ~C~ build tools, on
+Debian based machines the following seems to suffice:
+#+BEGIN_EXAMPLE
+apt-get install build-essential
+#+END_EXAMPLE
+
+If all goes well the executable ~triples~ should be in the current directory.
+
+I have only built this repo on Linux, OSX may work, Windows probably will not.
